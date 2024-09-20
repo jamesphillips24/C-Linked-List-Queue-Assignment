@@ -12,9 +12,13 @@ James Phillips
 
 6/15/24
 
-## Project
+## Project Structure
 
-PA2
+The project is organized into three main files:
+
+1. `smoothies.h` - Header file containing structure definitions and function declarations
+2. `smoothies.c` - Implementation of Smoothies and Customer functions
+3. `main.c` - Main program logic
 
 ## Features
 
@@ -22,22 +26,22 @@ PA2
 - Processes customers based on arrival time and order size
 - Calculates and tracks time for each transaction
 - Handles multiple simulation runs
-- Implements a custom queue data structure
+- Implements a custom queue data structure using function pointers
 
-## How to Compile
+## Compilation
 
 To compile the program, use a C compiler such as gcc:
 
 ```
-gcc -o smoothie_simulation main.c
+gcc -o smoothie_simulation main.c smoothies.c
 ```
 
-## How to Run
+## Running the Program
 
 After compiling, run the program:
 
 ```
-./smoothie_simulation < sampleinput.txt
+./smoothie_simulation < input_file.txt
 ```
 
 The program reads input from stdin, so you can either input data manually or use input redirection as shown above.
@@ -51,7 +55,7 @@ The input should be structured as follows:
    - Number of customers
    - For each customer: arrival time, line number, name, number of smoothies
 
-Example input (from sampleinput.txt):
+Example input:
 
 ```
 2
@@ -82,8 +86,8 @@ At time <departure_time>, <customer_name> left the counter from line <line_numbe
 
 ## Implementation Details
 
-- Uses a custom queue data structure (`struct Q`) to manage customers in each line
-- Implements a linked list approach for the queue with `struct node`
+- Uses a custom queue data structure (`struct Smoothies`) to manage customers in each line
+- Implements function pointers for queue operations (enqueue, dequeue, empty, peek)
 - Customer information is stored in `struct Customer`
 - Main processing loop:
   1. Read input and enqueue customers
@@ -98,9 +102,31 @@ At time <departure_time>, <customer_name> left the counter from line <line_numbe
 ## Memory Management
 
 The program implements custom memory management:
-- Dynamically allocates memory for customer names
+- Dynamically allocates memory for customer names and queue structures
 - Frees memory for processed customers and queue structures
+
+## Modifying the Simulation
+
+To modify the number of lines or change the processing time calculation, update the following:
+
+1. Change the `SIZE` constant in `smoothies.h` to adjust the number of lines
+2. Modify the `calcTime` function in `smoothies.c` to change the processing time calculation
 
 ## Note
 
 This program is designed for educational purposes and may not reflect real-world smoothie shop operations. The simulation can handle large time values and varying numbers of customers.
+
+## Future Improvements
+
+Potential areas for enhancement include:
+- Adding more clerk simulations
+- Implementing different queue selection algorithms
+- Adding a graphical user interface for visualization
+
+## Contributing
+
+Contributions to improve the simulation are welcome. Please ensure to maintain the existing code style and add appropriate comments for any new functionality.
+
+## License
+
+This project is open source and available under the [MIT License](https://opensource.org/licenses/MIT).
